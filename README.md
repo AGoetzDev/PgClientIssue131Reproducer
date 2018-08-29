@@ -22,45 +22,68 @@ The console output should look something like this:
 
 Aug 30, 2018 12:29:22 AM PostgreSQLClientWrapper
 INFORMATION: QUERY WITHOUT CLOSING: 1
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithoutClosing 1: Got Connection
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
-SCHWERWIEGEND: QueryWithoutClosing 1 Exception: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+SCHWERWIEGEND: QueryWithoutClosing 1 Exception: java.lang.ClassCastException: java.lang.String cannot be cast to 
+java.lang.Integer
+
 Aug 30, 2018 12:29:23 AM ReproducerVerticle
-SCHWERWIEGEND: First insert without closing failed: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+SCHWERWIEGEND: First insert without closing failed: java.lang.ClassCastException: java.lang.String cannot be cast to 
+java.lang.Integer
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QUERY WITHOUT CLOSING: 2
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithoutClosing 1: Closing
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithoutClosing 2: Got Connection
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 SCHWERWIEGEND: QueryWithoutClosing 2 Exception: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+
 Aug 30, 2018 12:29:23 AM ReproducerVerticle
 SCHWERWIEGEND: Second insert without closing failed: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QUERY WITH CONNECTION: 1
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithoutClosing 2: Closing
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithConnection 1: Got Connection
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 SCHWERWIEGEND: QueryWithConnection 1 Exception: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+
 Aug 30, 2018 12:29:23 AM ReproducerVerticle
 SCHWERWIEGEND: First insert with connection failed: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QUERY WITH CONNECTION: 2
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithConnection 2: Got Connection
+
 Aug 30, 2018 12:29:23 AM ReproducerVerticle
 SCHWERWIEGEND: Second insert with connection failed: io.vertx.core.VertxException: Connection not open CLOSED
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QUERY WITH CONNECTION: 3
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithConnection 3: Got Connection
+
 Aug 30, 2018 12:29:23 AM ReproducerVerticle
 SCHWERWIEGEND: Third insert with connection failed: io.vertx.core.VertxException: Connection not open CLOSED
+
 Aug 30, 2018 12:29:23 AM PostgreSQLClientWrapper
 INFORMATION: QueryWithConnection 1: Closing
+
 Aug 30, 2018 12:29:23 AM Main
 INFORMATION: Startup completed

@@ -43,14 +43,17 @@ public class ReproducerVerticle extends AbstractVerticle {
 		client.queryWithConnection(Tuple.of("wrong"), INSERT, 1).setHandler(h->{
 			if(h.failed()){
 				LOGGER.error("First insert with connection failed: "+h.cause());
-			}
+			} 
 			client.queryWithConnection(Tuple.of("wrong"), INSERT, 2).setHandler(h2->{
 				if(h2.failed()){
 					LOGGER.error("Second insert with connection failed: "+h2.cause());
 				}
-				client.queryWithConnection(Tuple.of("wrong"), INSERT, 3).setHandler(h3->{
+				//Do insert with correct type, should succeed => does not
+				client.queryWithConnection(Tuple.of(1), INSERT, 3).setHandler(h3->{
 					if(h3.failed()){
-						LOGGER.error("Third insert with connection failed: "+h2.cause());
+						LOGGER.error("Third insert with connection failed: "+h3.cause());
+					} else {
+						LOGGER.info("Third insert with connection succeeded!");
 					}
 					result.complete();
 				});
@@ -69,7 +72,16 @@ public class ReproducerVerticle extends AbstractVerticle {
 				if(h2.failed()){
 					LOGGER.error("Second insert without closing failed: "+h2.cause());
 				}
-				result.complete();
+				//Do insert with correct type, should succeed => does
+				client.queryWithoutClosing(Tuple.of(1), INSERT, 3).setHandler(h3->{
+					if(h3.failed()){
+						LOGGER.error("Third insert without closing failed: "+h3.cause());
+					} else {
+						LOGGER.info("Third insert without closing succeeded!");
+					}
+					result.complete();
+				});
+				
 			});
 		});
 		return result;
